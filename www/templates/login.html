@@ -1,7 +1,12 @@
 <ion-view>
   <ion-content>
-    <button class="button button-positive login-btn" ng-click="login()" ng-if="!hideLogin">
-      Login
-    </button>
+    <div class="sign-in-with-google-btn">
+      <img src="../img/btn_google_signin_dark_normal_web.png" ng-click="login()" ng-if="!hideLogin" />
+    </div>
   </ion-content>
+  <div class="bar bar-footer">
+    <h1 class="title login-footer">
+      <img height="60" src="../img/login_footer.jpg"></img>
+    </h1>
+  </div>
 </ion-view>

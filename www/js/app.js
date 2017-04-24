@@ -3,10 +3,10 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers', 'google-signin'])
 
-  .run(function($ionicPlatform) {
-    $ionicPlatform.ready(function() {
+  .run(function ($ionicPlatform) {
+    $ionicPlatform.ready(function () {
       if (window.cordova && window.cordova.plugins.Keyboard) {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -21,7 +21,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         StatusBar.styleDefault();
       }
     });
-  }).config(function($stateProvider, $urlRouterProvider) {
+  }).config(function ($stateProvider, $urlRouterProvider, GoogleSigninProvider) {
   $stateProvider
 
     .state('login', {
@@ -36,8 +36,13 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       params: {
         user: null
       }
-    })
+    });
+
+  GoogleSigninProvider.init({
+    client_id: '1054860948248-hkkkfe582ct1aqmi213h4bahmco7t9uj.apps.googleusercontent.com',
+  });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 });
+

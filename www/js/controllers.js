@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
-
-  .controller('LoginCtrl', function($scope, $ionicModal, $state) {
+//login page controller
+  .controller('LoginCtrl', function($scope, $ionicModal, $state, GoogleSignin) {
     $scope.loginData = {};
     $scope.hideLogin = false;
 
@@ -14,8 +14,13 @@ angular.module('starter.controllers', [])
 
 
     $scope.login = function() {
-      $scope.modal.show();
-      $scope.hideLogin = true;
+      GoogleSignin.signIn().then(function (user) {
+        $state.go('home',{user: user});
+        console.log(user);
+      }, function (err) {
+        console.log(err);
+      });
+
     };
 
     $scope.doLogin = function() {
@@ -28,11 +33,21 @@ angular.module('starter.controllers', [])
       $state.go('home',{user: $scope.loginData.username});
     };
   })
-
-.controller('HomeCtrl', function($scope, $state) {
+  //home page controller
+.controller('HomeCtrl', function($scope, $state, $http) {
   if(!$state.params.user){
     $state.go('login');
   }
 
-  $scope.userName = $state.params.user;
+  $scope.user = $state.params.user;
+
+  $scope.userName = $scope.user ? $scope.user.w3.ig : "";
+
+  $scope.testServerConnect = function(){
+
+    $http.get("http://sportsmeetup-160707.appspot.com/greeting?name=Dhara")
+      .then(function(response) {
+        //use server returned data here
+      });
+  }
 });

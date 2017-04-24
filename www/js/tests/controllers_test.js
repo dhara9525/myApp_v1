@@ -35,7 +35,7 @@ describe("Sports Meetup JS controllers suite", function () {
   it("initializes login controller", function () {
     var login = createController();
     expect(scope.loginData).toEqual({});
-    expect(scope.hideLogin).toBe(false);
+    expect(scope.hideLogin).toBe(true);
   });
 
 });

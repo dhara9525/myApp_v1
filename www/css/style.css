@@ -4,3 +4,21 @@
   /*top:50%;*/
   left:50%;
 }
+.sign-in-with-google-btn{
+  text-align: center;
+  margin-top: 150px;
+  cursor: pointer;
+}
+.bar.bar-stable{
+  background-color: #3d8af7;
+}
+.bar.bar-stable .title{
+  color: #fff;
+}
+.bar .title{
+  margin: 0;
+}
+.login-footer img{
+  width: 100%;
+  height: 100%;
+}
